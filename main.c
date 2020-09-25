@@ -108,8 +108,8 @@ int main(void)
 								  lcd_print("it is not valid ");
 							  }
 							  else
-								 {
-								 result=var1 / var2;
+						          {
+							 result=var1 / var2;
 								  if(result<10)
 								  {
 									  lcd_out(result+48);
