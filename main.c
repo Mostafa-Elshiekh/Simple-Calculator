@@ -20,17 +20,17 @@ int main(void)
 {
 		uint8_t  count=0;
 		/* Replace with your application code */
-		Port_Direction(B,output);                          	//DDRB=0xff
-		for(count=0;count<2;count++)             		//DDRA|=(1<<0)|(1<<1)
+		Port_Direction(B,output);                          	           //DDRB=0xff
+		for(count=0;count<2;count++)             		           //DDRA|=(1<<0)|(1<<1)
 		{
 			Pin_Direction(A,count,output);
 		}
 		
-		for(count=0;count<4;count++)          	//DDRD=0x0F
+		for(count=0;count<4;count++)          	                        //DDRD=0x0F
 		{
 			Pin_Direction(D,count,output);
 		}
-		for(count=0;count<4;count++)  		//PORTD|=(1<<0)|(1<<1)|(1<<2)|(1<<3)
+		for(count=0;count<4;count++)  		                       //PORTD|=(1<<0)|(1<<1)|(1<<2)|(1<<3)
 
 		{
 			Port_Write(D,count);
@@ -44,17 +44,17 @@ int main(void)
 		lcd_print("enter the nums");
 		while (1)
 		{
-				if(keypad()!='N'  && keypad()!='C')  // nums in keypad except(C-clear and Anything else)
+				if(keypad()!='N'  && keypad()!='C')           // nums in keypad except(C-clear and Anything else)
 				{
 					lcd_command(0xC);                     //display on , cursor off 
 					lcd_go_to(2,1+i);
 					lcd_out(keypad());
-					arr1[i]=(keypad());                         //store all Clicks in arr1
-					if(i==1 )                                              //store the first 2 digits in the var1
+					arr1[i]=(keypad());                   //store all Clicks in arr1
+					if(i==1 )                            //store the first 2 digits in the var1
 					{
-						var1=(arr1[i-1]*10)+arr1[i];      //to make Every two numbers , one number Consists of 2 digit
+						var1=(arr1[i-1]*10)+arr1[i]; //to make Every two numbers , one number Consists of 2 digit
 					}
-					if(i==4)                                            //store the seconder 2 digits in the var2
+					if(i==4)                            //store the seconder 2 digits in the var2
 					{
 						var2=(arr1[i-1]*10)+arr1[i];
 					}
@@ -70,8 +70,8 @@ int main(void)
 							 {
 								 lcd_num(result-48+16);
 							 }
-				   }
-				 if(keypad()=='=' && arr1[i-3]=='-')//subtraction operation
+				        }
+				         if(keypad()=='=' && arr1[i-3]=='-')//subtraction operation
 					  {
 							 result=var1-var2;
 							  if(result<10)
@@ -119,12 +119,12 @@ int main(void)
 					  
 					  i++;		  
 					  _delay_ms(600);
-				  }	  			
+				        }	  			
 				  	else if(keypad()=='C')                                // if  the Click (C -clear)
 				  			{
-					  			i=0;                                                   // to return the first index in arr1
-					  			result=0;                                       // to clear this var
-					  			lcd_command(0x1);                // to clear LCD
+					  			i=0;                          // to return the first index in arr1
+					  			result=0;                     // to clear this var
+					  			lcd_command(0x1);             // to clear LCD
 					  			lcd_go_to(1,1);
 					  			lcd_print("enter the nums");
 					  			_delay_ms(100);
